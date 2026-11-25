@@ -27,7 +27,7 @@ def get_salary():
         if salary <= 0:               # negative or zero is not allowed
             print("Invalid salary. Enter a positive number.")
         else:
-            return salary             # good salary, send it back
+            return salary             # get salary, send it back
 
 # Function 2: calculate HRA, DA and Gross salary
 # Gross = Basic + HRA + DA
