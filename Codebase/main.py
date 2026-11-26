@@ -57,7 +57,6 @@ def calculate_tax(gross):
 
 # Function 5: print the salary slip
 def print_slip(name, emp_id, basic, hra, da, gross, pf, tax, net):
-    print()
     print("=" * 36)
     print("          SALARY SLIP")
     print("=" * 36)
