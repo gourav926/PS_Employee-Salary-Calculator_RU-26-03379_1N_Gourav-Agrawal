@@ -7,11 +7,6 @@
 HRA_RATE = 0.20   # HRA = 20% of basic
 DA_RATE = 0.10    # DA  = 10% of basic
 PF_RATE = 0.12    # PF  = 12% of basic
-# show() function: shows 6000.0 as 6000, but keeps 1950.5 as 1950.50
-def show(number):
-    if number == int(number):
-        return str(int(number))
-    return "{:.2f}".format(number)
 
 # Function 1: get a valid salary from the user
 # Keeps asking until the user types a positive number
@@ -27,7 +22,7 @@ def get_salary():
         if salary <= 0:               # negative or zero is not allowed
             print("Invalid salary. Enter a positive number.")
         else:
-            return salary             # get salary, send it back
+            return salary             # good salary, send it back
 
 # Function 2: calculate HRA, DA and Gross salary
 # Gross = Basic + HRA + DA
@@ -57,38 +52,40 @@ def calculate_tax(gross):
 
 # Function 5: print the salary slip
 def print_slip(name, emp_id, basic, hra, da, gross, pf, tax, net):
+    print()
     print("=" * 36)
     print("          SALARY SLIP")
     print("=" * 36)
     print("Employee Name :", name)
     print("Employee ID   :", emp_id)
     print("-" * 36)
-    print("Basic Salary  :", show(basic))
-    print("HRA (20%)     :", show(hra))
-    print("DA (10%)      :", show(da))
-    print("Gross Salary  :", show(gross))
+    print("Basic Salary  :", basic)
+    print("HRA (20%)     :", hra)
+    print("DA (10%)      :", da)
+    print("Gross Salary  :", gross)
     print("-" * 36)
-    print("PF (12%)      :", show(pf))
-    print("Tax           :", show(tax))
+    print("PF (12%)      :", pf)
+    print("Tax           :", tax)
     print("-" * 36)
-    print("NET SALARY    :", show(net))
+    print("NET SALARY    :", net)
     print("=" * 36)
 
     # The same lines in the format asked in the test cases
-    print("HRA:", show(hra), "| DA:", show(da), "| Gross:", show(gross))
-    print("PF:", show(pf), "| Tax:", show(tax), "| Net Salary:", show(net))
+    print("HRA:", hra, "| DA:", da, "| Gross:", gross)
+    print("PF:", pf, "| Tax:", tax, "| Net Salary:", net)
 
 # EXTRA FEATURE: save the slip into a text file
 def save_slip(name, emp_id, basic, hra, da, gross, pf, tax, net):
     file = open("salary_slips.txt", "a")      # "a" = add at the end of file
     file.write("Name: " + name + " | ID: " + emp_id + "\n")
-    file.write("Basic: " + show(basic) + "\n")
-    file.write("HRA: " + show(hra) + " | DA: " + show(da) +
-               " | Gross: " + show(gross) + "\n")
-    file.write("PF: " + show(pf) + " | Tax: " + show(tax) +
-               " | Net Salary: " + show(net) + "\n")
+    file.write("Basic: " + str(basic) + "\n")
+    file.write("HRA: " + str(hra) + " | DA: " + str(da) +
+               " | Gross: " + str(gross) + "\n")
+    file.write("PF: " + str(pf) + " | Tax: " + str(tax) +
+               " | Net Salary: " + str(net) + "\n")
     file.write("-" * 36 + "\n")
     file.close()
+
 # MAIN PROGRAM
 def main():
     print("===== EMPLOYEE SALARY CALCULATOR =====")
@@ -120,19 +117,21 @@ def main():
 
         more = input("\nAdd another employee? (yes/no): ").lower()
         if more != "yes" and more != "y":
-            break             
+            break
           # stop the loop
+
     # EXTRA FEATURE: summary of the whole session
     print()
     print("=" * 36)
     print("          SUMMARY")
     print("=" * 36)
     print("Employees processed :", len(all_names))
-    print("Total salary payout :", show(sum(all_net_salaries)))
+    print("Total salary payout :", sum(all_net_salaries))
 
     highest = max(all_net_salaries)
     position = all_net_salaries.index(highest)
-    print("Highest paid        :", all_names[position], "-", show(highest))
+    print("Highest paid        :", all_names[position], "-", highest)
     print("Thank you!")
+
 # Python starts running from here
 main()
