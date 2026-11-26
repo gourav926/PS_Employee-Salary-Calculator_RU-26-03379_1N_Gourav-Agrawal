@@ -7,7 +7,7 @@
 HRA_RATE = 0.20   # HRA = 20% of basic
 DA_RATE = 0.10    # DA  = 10% of basic
 PF_RATE = 0.12    # PF  = 12% of basic
-# Small helper: shows 6000.0 as 6000, but keeps 1950.5 as 1950.50
+# show() function: shows 6000.0 as 6000, but keeps 1950.5 as 1950.50
 def show(number):
     if number == int(number):
         return str(int(number))
